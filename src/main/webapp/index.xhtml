@@ -34,7 +34,7 @@
 				</p:submenu>
 				
 							<p:submenu label="Perfil">
-					<p:menuitem value="Editar Perfil" />
+					<p:menuitem value="Editar Perfil" action="/casamento/cadastrarCasamento.xhtml"/>
 
 				</p:submenu>
 				
@@ -43,8 +43,11 @@
 		</p:layoutUnit>
 		
 		
-		<p:layoutUnit position="west" size="400" header="Left" resizable="true" closable="true" collapsible="true">
-        <h:outputText value="West unit content." />
+		<p:layoutUnit position="west" size="400" header="Casamento" resizable="true" closable="true" collapsible="true"  var="casamento" value="#{casamentoMbean.casamentoService}">
+       		
+       		<h:outputText value= "noiva" />
+       		<h:outputText value= "#{casamento.nomeNoiva}" />
+       		
     	</p:layoutUnit>
 
 
