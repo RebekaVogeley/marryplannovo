@@ -26,11 +26,11 @@
 					<p:ajax event="rowEdit" listener="#{tarefasMbean.alterar}" />
 					<p:ajax event="rowEditCancel"
 						listener="#{tarefasMbean.cancelarEdicao}" />
-					<p:column headerText="Id">
+					<p:column headerText="Id" style="width: 150px">
 						<h:outputText value="#{tarefas.id}" />
 					</p:column>
 			
-					<p:column headerText="Nome da tarefa">
+					<p:column headerText="Nome da tarefa" style="width: 150px">
 						<p:cellEditor>
 							<f:facet name="output">
 								<h:outputText value="#{tarefas.nome}" />
@@ -41,18 +41,18 @@
 						</p:cellEditor>
 					</p:column>
 			
-					<p:column headerText="Status">
-						<p:inputSwitch value="#{tarefas.status}" onLabel="Resolvida" offLabel="Não Resolvida"/>
+					<p:column headerText="Status" style="width: 150px" >
+						<p:inputSwitch value="#{tarefas.status}" onLabel="OK" offLabel="Não OK"/>
 					</p:column>
 			
-					<p:column headerText="Excluir">
+					<p:column headerText="Excluir" style="width: 50px" >
 			
 						<p:commandButton icon="ui-icon-trash" title="Excluir Registro"
 							ajax="true" actionListener="#{tarefasMbean.excluir(tarefas)}"
 							update="@form" />
 					</p:column>
 			
-					<p:column headerText="Alterar">
+					<p:column headerText="Alterar" style="width: 50px" >
 						<p:rowEditor />
 					</p:column>
 			

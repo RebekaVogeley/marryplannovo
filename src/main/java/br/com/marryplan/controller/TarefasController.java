@@ -46,7 +46,7 @@ public class TarefasController extends AbstractController{
 	
 	public String salvar() {
 		// Calling Business Service
-		tarefasService.salvar(tarefas);;
+		tarefasService.salvar(tarefas);
 		// Add message
 		FacesContext.getCurrentInstance().addMessage(null, 
 				new FacesMessage("A tarefa "+this.tarefas.getNome()+" foi gravado com sucesso!"));

@@ -29,11 +29,10 @@ public class UsuarioController extends AbstractController{
 		boolean retorno = usuarioService.consultar(usuario.getLogin(), usuario.getSenha());
 		String tela = "";
 		if(retorno){
-			tela = "/usuario/telaLogin";
-		}else{
 			tela  = "/index.xhtml";
+		}else{
+			tela = "/usuario/telaLogin";
 		}
-		
 		return tela;
 	}
 	public UsuarioService getUsuarioService() {
