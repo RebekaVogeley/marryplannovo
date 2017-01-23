@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 
 
 import br.com.marryplan.service.TarefasService;
+import br.com.marryplan.vo.ConvidadoVO;
 import br.com.marryplan.vo.TarefasVO;
 
 
@@ -79,7 +80,17 @@ public class TarefasController extends AbstractController{
 		this.listaTarefasVO = tarefasService.listarTodos();
 		FacesContext.getCurrentInstance().addMessage(null,
 				new FacesMessage(FacesMessage.SEVERITY_INFO, null, "Tarefa excluida com sucesso!"));
+		this.limparCampos();
 		return "";
+	}
+	
+	private void limparCampos() {
+		this.getTarefas().setNome(null);
+
+	}
+	public void cancelarEdicao(RowEditEvent event){
+		FacesMessage msg = new FacesMessage("Edição Cancelada!", ((TarefasVO) event.getObject()).getNome());
+		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 	
 }

@@ -14,7 +14,7 @@
 <h:body>
 	<p:layout fullPage="true">
 
-		<p:layoutUnit position="north" size="220"  header="Marry Plan"
+		<p:layoutUnit position="north" size="180"  header="Marry Plan"
 			resizable="true" closable="true" collapsible="true">
 			<h:form>
 			<p:menubar>
@@ -28,9 +28,8 @@
 				</p:submenu>
 
 				<p:submenu label="Orçamentos">
-					<p:menuitem value="Cadastrar Fornecedor" />
-					<p:menuitem value="Cadastrar Gastos" />
-					<p:menuitem value="Tabela de Despesa"/>
+					<p:menuitem value="Cadastrar Despesa" action="#{gastoMbean.chamarTelaCadastroDespesa}"/>
+					<p:menuitem value="Tabela de Despesa" action="#{gastoMbean.chamarTelaTodosDespesa}"/>
 				</p:submenu>
 				
 							<p:submenu label="Perfil">

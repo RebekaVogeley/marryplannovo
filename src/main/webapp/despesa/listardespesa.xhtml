@@ -1,0 +1,87 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+		
+		<ui:decorate template="/index.xhtml">
+			<ui:define name="centro">
+				<h:body>
+					<h:form>
+						<p:messages id="messages" showDetail="true" autoUpdate="true"
+							closable="true" />
+		
+						<p:dataTable var="despesa"
+							value="#{gastoMbean.listaDespesaVO}" rows="7"
+							paginator="true"
+							paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink}
+											{PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+							rowsPerPageTemplate="7,14,21" style="width:98%" editable="true">
+		
+							<p:ajax event="rowEdit" listener="#{gastoMbean.alterar}" />
+							<p:ajax event="rowEditCancel"
+								listener="#{gastoMbean.cancelarEdicao}" />
+		
+							<p:column headerText="Id">
+								<h:outputText value="#{despesa.id}" />
+							</p:column>
+		
+							<!-- Nome do tipo de serviço -->
+							<p:column headerText="Nome">
+								<p:cellEditor>
+									<f:facet name="output">
+										<h:outputText value="#{despesa.gasto}" />
+									</f:facet>
+									<f:facet name="input">
+										<p:inputText id="inputNome" value="#{despesa.gasto}" />
+									</f:facet>
+								</p:cellEditor>
+							</p:column>
+		
+							<p:column headerText="Telefone">
+								<p:cellEditor>
+									<f:facet name="output">
+										<h:outputText value="#{despesa.contatoServico}" />
+									</f:facet>
+									<f:facet name="input">
+										<p:inputMask id="inputTelefone" value="#{despesa.contatoServico}"
+											mask="(999)9999-9999" />
+									</f:facet>
+								</p:cellEditor>
+							</p:column>
+		
+							<p:column headerText="Gasto">
+								<p:cellEditor>
+									<f:facet name="output">
+										<h:outputText value="#{despesa.valorDespesa}" />
+									</f:facet>
+									<f:facet name="input">
+										<p:inputMask id="inputGasto" value="#{despesa.valorDespesa}"
+											mask="9.999.999.999,99" />
+									</f:facet>
+								</p:cellEditor>
+							</p:column>
+							
+							
+							<p:column headerText="Excluir">
+		
+								<p:commandButton icon="ui-icon-trash" title="Excluir Registro"
+									ajax="true" actionListener="#{gastoMbean.excluir(despesa)}"
+									update="@form" />
+							</p:column>
+		
+							<p:column headerText="Alterar">
+								<p:rowEditor />
+							</p:column>
+		
+						</p:dataTable>
+		
+					</h:form>
+				</h:body>
+			</ui:define>
+		</ui:decorate>
+</html>

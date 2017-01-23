@@ -5,10 +5,12 @@ import java.util.List;
 
 import br.com.marryplan.entidade.Casamento;
 import br.com.marryplan.entidade.Convidado;
+import br.com.marryplan.entidade.Despesa;
 import br.com.marryplan.entidade.Tarefas;
 import br.com.marryplan.entidade.Usuario;
 import br.com.marryplan.vo.CasamentoVO;
 import br.com.marryplan.vo.ConvidadoVO;
+import br.com.marryplan.vo.DespesaVO;
 import br.com.marryplan.vo.TarefasVO;
 import br.com.marryplan.vo.UsuarioVO;
 
@@ -142,5 +144,40 @@ public class Converter {
 
 	}
 
+	public static Despesa converterVoParaDespesa(DespesaVO despesaVO) {
+		Despesa despesa = new Despesa();
+
+		despesa.setGasto(despesaVO.getGasto());
+		despesa.setValorDespesa(despesaVO.getValorDespesa());
+		despesa.setContatoServico(despesaVO.getContatoServico());
+		despesa.setDataPagamento(despesaVO.getDatapagamento());
+	
+
+		return despesa;
+	}
+
+	public static DespesaVO converterDespesaParaVO(Despesa despesa) {
+		DespesaVO despesaVO = new DespesaVO();
+
+		despesaVO.setGasto(despesa.getGasto());
+		despesaVO.setValorDespesa(despesa.getValorDespesa());
+		despesaVO.setContatoServico(despesa.getContatoServico());
+		despesaVO.setDatapagamento(despesa.getDataPagamento());
+
+		return despesaVO;
+	}
+
+	public static List<DespesaVO> converterListaDespesaParaListaVo(List<Despesa> listaEntidade) {
+		List<DespesaVO> listDespesaVO = new ArrayList<DespesaVO>();
+		if (listaEntidade != null && !listaEntidade.isEmpty()) {
+			for (Despesa despesa : listaEntidade) {
+				DespesaVO despesaVO = converterDespesaParaVO(despesa);
+				listDespesaVO.add(despesaVO);
+			}
+
+		}
+		return listDespesaVO;
+	}
+	
 
 }
